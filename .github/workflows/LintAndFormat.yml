@@ -1,4 +1,4 @@
-name: Rust
+name: Rust Check Format and Lint
 
 on:
   push:
@@ -17,14 +17,14 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  LintAndFormat:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
+    - name: Check Format
       run: cargo fmt --check
-    - name: Run tests
+    - name: Lint 
       run: cargo clippy
     - uses: Swatinem/rust-cache@v1
