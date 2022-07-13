@@ -27,11 +27,7 @@ pub fn run() {
                 }
 
                 // Handle all window events
-                match event {
-                    WindowEvent::CloseRequested => *control_flow = ControlFlow::Exit,
-
-                    _ => {}
-                }
+                if event == &WindowEvent::CloseRequested { *control_flow = ControlFlow::Exit }
             }
             _ => {}
         }
