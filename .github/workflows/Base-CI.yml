@@ -1,0 +1,39 @@
+name: Rust Build and Test
+
+on:
+  push:
+    branches: 
+      - main
+      - develop
+      - feature/*
+      - bugfix/* 
+
+  pull_request:
+    branches: 
+      - main
+      - develop
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  Build-Test-Format-Lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: cargo build
+
+    - name: Run tests
+      run: cargo test 
+
+    - name: Check Format
+      run: cargo fmt --check
+
+    - name: Lint 
+      run: cargo clippy -- -D warnings
+
+    - uses: Swatinem/rust-cache@v1
