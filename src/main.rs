@@ -18,7 +18,6 @@ pub fn run() {
             }
 
             Event::WindowEvent { ref event, window_id } => {
-                
                 // Check we're examining the correct window
                 if window.id() != window_id {
                     return;
