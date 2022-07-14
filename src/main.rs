@@ -17,17 +17,17 @@ pub fn run() {
                 *control_flow = ControlFlow::Wait;
             }
 
-            Event::WindowEvent {
-                ref event,
-                window_id,
-            } => {
+            Event::WindowEvent { ref event, window_id } => {
+                
                 // Check we're examining the correct window
                 if window.id() != window_id {
                     return;
                 }
 
-                // Handle all window events
-                if event == &WindowEvent::CloseRequested { *control_flow = ControlFlow::Exit }
+                // Handle window close button pressed
+                if event == &WindowEvent::CloseRequested {
+                    *control_flow = ControlFlow::Exit
+                }
             }
             _ => {}
         }
